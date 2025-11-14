@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Explore Activities – Bloom’s stAIrcase</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+    <strong>Bloom’s stAIrcase</strong>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html">Interactive Tool</a>
+      <a href="explore.html" class="active">Explore Activities</a>
+      <a href="about.html">About & Guide</a>
+      <a href="accessibility.html">Accessibility & Licensing</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Explore Activities</h1>
+  <p class="lead">Browse sample activities. Filter or sort by discipline, cognitive process, knowledge type, or AI literacy focus.</p>
+
+  <div class="panel">
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+      <div>
+        <label for="f-discipline">Discipline</label>
+        <input type="text" id="f-discipline" placeholder="e.g., History">
+      </div>
+      <div>
+        <label for="f-cog">Cognitive Process</label>
+        <select id="f-cog">
+          <option value="">Any</option>
+          <option>remember</option><option>understand</option><option>apply</option>
+          <option>analyze</option><option>evaluate</option><option>create</option>
+        </select>
+      </div>
+      <div>
+        <label for="f-know">Knowledge Type</label>
+        <select id="f-know">
+          <option value="">Any</option>
+          <option>factual</option><option>conceptual</option><option>procedural</option><option>metacognitive</option>
+        </select>
+      </div>
+      <div>
+        <label for="f-ai">AI Literacy Focus</label>
+        <input type="text" id="f-ai" placeholder="e.g., safety">
+      </div>
+    </div>
+    <div class="actions">
+      <button id="applyFilters" class="btn">Apply Filters</button>
+      <button id="clearFilters" class="btn secondary">Clear</button>
+      <a class="btn secondary" id="downloadCsv" href="#">Download CSV</a>
+    </div>
+  </div>
+
+  <table class="table" id="actTable">
+    <caption>Sample Activities</caption>
+    <thead>
+      <tr>
+        <th scope="col">Activity Title</th>
+        <th scope="col">Discipline</th>
+        <th scope="col">Cognitive</th>
+        <th scope="col">Knowledge</th>
+        <th scope="col">AI Literacy</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</main>
+
+<footer role="contentinfo" class="site-footer">
+  <div class="container">
+    <p>Created by <a href="#" target="_blank" rel="noopener">Nicole Baker</a> and <a href="#" target="_blank" rel="noopener">BM</a>.</p>
+    <p class="cc"><img src="assets/cc-by-sa.svg" alt="Creative Commons BY-SA license" height="18"> <a href="accessibility.html#licensing">Site licensing & attribution</a></p>
+  </div>
+</footer>
+<script>
+async function loadActivities() { 
+  const res = await fetch('activities.json');
+  const data = await res.json();
+  window._ACT = data;
+  renderTable(data);
+}
+function renderTable(rows){
+  const tbody = document.querySelector('#actTable tbody');
+  tbody.innerHTML = rows.map(r => 
+    `<tr><td>${r.title}</td><td>${r.discipline}</td><td>${r.cognitive}</td><td>${r.knowledge}</td><td>${r.ai_literacy}</td><td>${r.description}</td></tr>`
+  ).join('');
+}
+function applyFilters(){
+  const d = document.getElementById('f-discipline').value.trim().toLowerCase();
+  const c = document.getElementById('f-cog').value;
+  const k = document.getElementById('f-know').value;
+  const a = document.getElementById('f-ai').value.trim().toLowerCase();
+  const rows = window._ACT.filter(r => 
+    (!d || r.discipline.toLowerCase().includes(d)) &&
+    (!c || r.cognitive === c) &&
+    (!k || r.knowledge === k) &&
+    (!a || r.ai_literacy.toLowerCase().includes(a))
+  );
+  renderTable(rows);
+}
+function clearFilters(){
+  document.getElementById('f-discipline').value='';
+  document.getElementById('f-cog').value='';
+  document.getElementById('f-know').value='';
+  document.getElementById('f-ai').value='';
+  renderTable(window._ACT);
+}
+function toCsv(data){
+  const cols = ["title","discipline","cognitive","knowledge","ai_literacy","description"];
+  const escape = s => ('"'+String(s).replace(/"/g,'""')+'"');
+  const rows = [cols.join(",")].concat(data.map(r => cols.map(c => escape(r[c] or '')).join(",")));
+  return rows.join("\n");
+}
+document.getElementById('applyFilters').addEventListener('click', applyFilters);
+document.getElementById('clearFilters').addEventListener('click', clearFilters);
+document.getElementById('downloadCsv').addEventListener('click', (e)=>{
+  e.preventDefault();
+  const csv = ["title,discipline,cognitive,knowledge,ai_literacy,description"].concat(
+    window._ACT.map(r => [`"${r.title}"`,`"${r.discipline}"`,`"${r.cognitive}"`,`"${r.knowledge}"`,`"${r.ai_literacy}"`,`"${r.description}"`].join(","))
+  ).join("\n");
+  const blob = new Blob([csv], {{'type':'text/csv'}});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'activities.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+});
+loadActivities();
+</script>
+</body>
+</html>

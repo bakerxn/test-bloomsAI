@@ -1,0 +1,115 @@
+{
+  "cognitive": [
+    {
+      "id": "remember",
+      "label": "Remember",
+      "desc": "Retrieve relevant knowledge from long-term memory."
+    },
+    {
+      "id": "understand",
+      "label": "Understand",
+      "desc": "Construct meaning from instructional messages, including oral, written, and graphic communication."
+    },
+    {
+      "id": "apply",
+      "label": "Apply",
+      "desc": "Carry out or use a procedure in a given situation."
+    },
+    {
+      "id": "analyze",
+      "label": "Analyze",
+      "desc": "Break material into constituent parts and determine how parts relate to one another and to an overall structure or purpose."
+    },
+    {
+      "id": "evaluate",
+      "label": "Evaluate",
+      "desc": "Make judgements based on criteria and standards."
+    },
+    {
+      "id": "create",
+      "label": "Create",
+      "desc": "Put elements together to form a coherent whole; reorganize into a new pattern or structure."
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "factual",
+      "label": "Factual",
+      "desc": "The basic elements students must know to be acquainted with a discipline or solve problems in it."
+    },
+    {
+      "id": "conceptual",
+      "label": "Conceptual",
+      "desc": "The interrelationships among the basic elements within a larger structure that enable them to function together."
+    },
+    {
+      "id": "procedural",
+      "label": "Procedural",
+      "desc": "How to do something, methods of inquiry, and criteria for using skills, algorithms, techniques, and methods."
+    },
+    {
+      "id": "metacognitive",
+      "label": "Metacognitive",
+      "desc": "Knowledge of cognition in general as well as awareness and knowledge of one's own cognition."
+    }
+  ],
+  "ai_literacy": [
+    {
+      "id": "hardware_software",
+      "label": "Hardware & Software",
+      "desc": "Know which AI tool to use; use AI tools and features on phone/tablet/laptop/desktop."
+    },
+    {
+      "id": "info_data",
+      "label": "Information & Data Literacy",
+      "desc": "Use AI to access new info and organize data; evaluate AI output; modify techniques to improve AI performance."
+    },
+    {
+      "id": "communication",
+      "label": "Communication & Collaboration",
+      "desc": "Converse with AI systems and chatbots; manage and share AI content; determine whether/how to acknowledge AI; use AI in collaboration with others."
+    },
+    {
+      "id": "content_creation",
+      "label": "Content Creation",
+      "desc": "Use AI to create and personalize new content and adapt existing content; understand legal and ethical issues with AI datasets, models, and output."
+    },
+    {
+      "id": "safety",
+      "label": "Safety",
+      "desc": "Know risks and liabilities of AI tools; review privacy policies for data usage; manage risks to personal info and wellbeing; use AI in ethical ways and assess environmental impact."
+    },
+    {
+      "id": "problem_solving",
+      "label": "Problem Solving",
+      "desc": "Recognize errors and inconsistencies in outputs; identify and solve AI-related problems; use AI to create insights and improve processes; identify skill gaps and continually learn."
+    },
+    {
+      "id": "career_competencies",
+      "label": "Career Competencies",
+      "desc": "Use and customize AI tools in a specific field; understand and analyze AI content in that field; combine industry expertise with AI analysis and processes."
+    }
+  ],
+  "ai_tools": [
+    {
+      "id": "chatgpt",
+      "label": "ChatGPT",
+      "url": "https://chat.openai.com/"
+    },
+    {
+      "id": "gemini",
+      "label": "Google Gemini",
+      "url": "https://gemini.google.com/"
+    },
+    {
+      "id": "claude",
+      "label": "Anthropic Claude",
+      "url": "https://claude.ai/"
+    },
+    {
+      "id": "perplexity",
+      "label": "Perplexity",
+      "url": "https://www.perplexity.ai/"
+    }
+  ]
+}

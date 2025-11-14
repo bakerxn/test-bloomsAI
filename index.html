@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bloom’s stAIrcase – Interactive Tool</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+      <strong>Bloom’s stAIrcase</strong>
+      <nav class="nav" aria-label="Main">
+        <a href="index.html" class="active">Interactive Tool</a>
+        <a href="explore.html">Explore Activities</a>
+        <a href="about.html">About & Guide</a>
+        <a href="accessibility.html">Accessibility & Licensing</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Interactive Tool</h1>
+    <p class="lead">Choose one option from each category to build an AI-enhanced learning activity. Click to select; a definition will appear below each list.</p>
+
+    <section aria-labelledby="cognitive-h">
+      <h2 id="cognitive-h">Cognitive Process (choose one)</h2>
+      <div class="hex-row" data-category="cognitive" role="group" aria-label="Cognitive Process options"></div>
+      <div class="desc-panel" id="desc-cognitive" aria-live="polite"></div>
+    </section>
+
+    <section aria-labelledby="knowledge-h">
+      <h2 id="knowledge-h">Knowledge Dimension (choose one)</h2>
+      <div class="hex-row" data-category="knowledge" role="group" aria-label="Knowledge Dimension options"></div>
+      <div class="desc-panel" id="desc-knowledge" aria-live="polite"></div>
+    </section>
+
+    <section aria-labelledby="ai-h">
+      <h2 id="ai-h">AI Literacy Focus (choose one)</h2>
+      <div class="hex-row" data-category="ai_literacy" role="group" aria-label="AI Literacy options"></div>
+      <div class="desc-panel" id="desc-ai_literacy" aria-live="polite"></div>
+    </section>
+
+    <div class="panel">
+      <h2>Next steps</h2>
+      <p>After you’ve made your three selections, continue to see examples, assessment ideas, and build a custom prompt for your AI tool.</p>
+      <div class="actions">
+        <button id="submitChoices" class="btn" disabled>Continue</button>
+        <a class="btn secondary" href="explore.html">Explore sample activities</a>
+      </div>
+      <div id="actionsPanel" class="panel" style="display:none;margin-top:12px;">
+        <h3>What would you like to do?</h3>
+        <div class="actions">
+          <button id="seeExamples" class="btn secondary">See a sample activity</button>
+          <button id="seeAssessment" class="btn secondary">Assessment ideas</button>
+          <button id="seeAccessibility" class="btn secondary">Accessibility tips</button>
+          <button id="openForm" class="btn">Open customization form</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Customization Form -->
+    <div id="formModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="formTitle">
+      <div class="dialog">
+        <h2 id="formTitle">Customize your context</h2>
+        <p class="lead">Provide a bit of course context to generate a tailored prompt.</p>
+        <form id="contextForm">
+          <label>Institution type <input type="text" name="institution" placeholder="e.g., R1, liberal arts, community college"></label>
+          <label>Course title <input type="text" name="course" placeholder="e.g., HSTY 100: Introduction to History"></label>
+          <label>Level <input type="text" name="level" placeholder="e.g., lower-division undergraduate"></label>
+          <label>Modality <input type="text" name="modality" placeholder="e.g., asynchronous online"></label>
+          <label>Discipline <input type="text" name="discipline" placeholder="e.g., History, Psychology, Engineering"></label>
+          <label>Learning objective(s) <textarea name="objectives" rows="2" placeholder="Paste or write objective(s)…"></textarea></label>
+          <label>Time & materials <input type="text" name="time" placeholder="e.g., 30 minutes; laptop + database access"></label>
+          <label>Materials <input type="text" name="materials" placeholder="Optional additional materials"></label>
+          <label>AI policy / integrity guardrails <textarea name="ai_policy" rows="2" placeholder="Explain where AI is allowed/not allowed, citation expectations, etc."></textarea></label>
+
+          <div class="actions">
+            <button type="button" id="buildPromptBtn" class="btn">Build Prompt</button>
+            <button type="button" id="closeForm" class="btn secondary">Close</button>
+          </div>
+        </form>
+
+        <div id="promptPanel" class="panel" style="display:none;margin-top:12px;">
+          <h3>Your generated prompt</h3>
+          <textarea id="promptOut" rows="10" aria-label="Generated prompt"></textarea>
+          <p>Select an AI tool. We’ll copy the prompt to your clipboard and open the tool in a new tab.</p>
+          <div id="aiToolButtons" class="actions"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="live" class="sr-only" aria-live="polite"></div>
+  </main>
+
+  <footer role="contentinfo" class="site-footer">
+    <div class="container">
+      <p>
+        Created by 
+        <a href="#" target="_blank" rel="noopener">Nicole Baker</a> and 
+        <a href="#" target="_blank" rel="noopener">BM</a>.
+      </p>
+      <p>
+        Frameworks adapted from 
+        <a href="https://kennedyhq.com/wp/2023/12/21/ai-literacy-framework/" target="_blank" rel="noopener">
+        Dr. Kara Kennedy’s <em>AI Literacy Framework</em></a> (CC BY 4.0) and 
+        <a href="https://www.celt.iastate.edu/teaching/effective-teaching-practices/revised-blooms-taxonomy/" target="_blank" rel="noopener">
+        Rex Heer’s <em>Model of Learning Objectives</em></a> (CC BY-SA 4.0).
+      </p>
+      <p class="cc">
+        <img src="assets/cc-by-sa.svg" alt="Creative Commons BY-SA license" height="18">
+        <a href="accessibility.html#licensing">Site licensing & attribution</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

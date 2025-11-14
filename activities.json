@@ -1,0 +1,29 @@
+[
+  {
+    "title": "Source Sleuth",
+    "discipline": "History",
+    "cognitive": "analyze",
+    "knowledge": "conceptual",
+    "ai_literacy": "information & data literacy",
+    "description": "Students analyze conflicting AI summaries of a primary source; compare with the original; annotate inconsistencies; propose correction prompts.",
+    "link": "#"
+  },
+  {
+    "title": "Method in Practice",
+    "discipline": "Psychology",
+    "cognitive": "apply",
+    "knowledge": "procedural",
+    "ai_literacy": "communication & collaboration",
+    "description": "Students apply a coding scheme to interview excerpts; prompt AI to code; compare outputs; negotiate criteria; write an interrater-reliability memo.",
+    "link": "#"
+  },
+  {
+    "title": "Bias Busters",
+    "discipline": "Computer Science",
+    "cognitive": "evaluate",
+    "knowledge": "metacognitive",
+    "ai_literacy": "safety",
+    "description": "Students evaluate AI output for bias and privacy risks and reflect on their own evaluation strategies.",
+    "link": "#"
+  }
+]
